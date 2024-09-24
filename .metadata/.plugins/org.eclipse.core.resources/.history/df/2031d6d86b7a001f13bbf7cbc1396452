@@ -1,0 +1,32 @@
+package dao;
+
+import java.util.List;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import domain.entity.Item;
+
+public class ItemDao {
+	private JdbcTemplate jdbcTemplate;
+	
+	public ItemDao(DataSource datasource) {
+		this.jdbcTemplate = new JdbcTemplate(datasource);
+	}
+	
+	public Item selectById(Long id) {
+		return null;
+	}
+	
+	public void inserItem(Item item) {
+		
+	}
+	
+	public void updateItem(Item item) {
+		
+	}
+	
+	public List<Item> selectAll(){
+		return null;
+	}
+}

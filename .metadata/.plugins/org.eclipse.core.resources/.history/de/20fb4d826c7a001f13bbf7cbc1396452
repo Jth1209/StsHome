@@ -1,0 +1,41 @@
+package dao;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import domain.entity.Item;
+
+public class ItemDao {
+	private JdbcTemplate jdbcTemplate;
+	
+	public ItemDao(DataSource datasource) {
+		this.jdbcTemplate = new JdbcTemplate(datasource);
+	}
+	
+	public Item selectById(Long id) {
+		Item results = jdbcTemplate.queryForObject("select * from item where item_id = ?", 
+				(ResultSet rs, int rowNum) -> {
+					Item item = new Item(rs.getLong("item_id"),
+							             rs.getString("name"),
+							             rs.getInt("price"),
+							             rs.getInt("stock_quantity"));
+					return item;
+				});
+		return results;
+	}
+	
+	public void inserItem(Item item) {
+		
+	}
+	
+	public void updateItem(Item item) {
+		
+	}
+	
+	public List<Item> selectAll(){
+		return null;
+	}
+}
